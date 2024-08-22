@@ -78,7 +78,7 @@ export const ayncRoutes = [
     children: [
       {
         path: 'trademark',
-        name: 'TradeMark',
+        name: 'Trademark',
         component: () => import('@/views/product/trademark'),
         meta: { title: '品牌管理' }
       },

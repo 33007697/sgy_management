@@ -50,7 +50,6 @@ const mutations = {
   SET_FILTER:(state,filterRoute)=>{
     // 保存筛选后的路由
     state.filterRoutes = filterRoute
-    console.log(filterRoute)
     // 对路由进行整合
     state.resultAllRoutes = constantRoutes.concat(state.filterRoutes,randomRoutes)
     // 添加到路由列表中
@@ -58,7 +57,7 @@ const mutations = {
   }
 }
 
-// 筛选路由函数
+// 筛选路由函数,ayncRoutes为异步路由，routes为服务器返回的路由标记
 const filterRoutes = (ayncRoutes,routes) =>{
   // 筛选异步路由,并将结果返回
   return ayncRoutes.filter(item => {
@@ -109,6 +108,7 @@ const actions = {
         commit('SET_INFO',data)
         // 筛选路由,并整合路由
         commit('SET_FILTER',filterRoutes(ayncRoutes,data.routes))
+        console.log(data)
 
         resolve(data)
       }).catch(error => {

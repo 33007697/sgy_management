@@ -44,8 +44,19 @@ module.exports = {
     proxy: {
       '/dev-api': {
         target: 'http://sph-h5-api.atguigu.cn',
+        changeOrigin: true,
         pathRewrite: { '^/dev-api': '' }
-      }
+      },
+      '/prod':{ 
+        target:'http://sph-h5-api.atguigu.cn',
+        changeOrigin: true,
+        pathRewrite:{'^/prod':''}
+      },
+      // '/stage-api':{
+      //   target:'http://sph-h5-api.atguigu.cn',
+      //   changeOrigin: true,
+      //   pathRewrite:{'^/stage-api':''}
+      // }
     },
     // 开启mock模拟数据
     // before: require('./mock/mock-server.js'),
